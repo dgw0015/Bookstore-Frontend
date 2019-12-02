@@ -1,0 +1,103 @@
+
+.overlay {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   height: 90vw;
+   background-color: rgba(0, 0, 0, 0.40);
+   z-index: -1;
+}
+
+form  {
+   width: 100%;
+   height: auto;
+   padding-bottom: 1.5vw;
+   margin-bottom: 0;
+}
+
+.lead {
+   position: relative;
+   text-align: center;
+   font-size: 3vw;
+   color: white;
+   margin-bottom: 0;
+   padding: 2.5vw 1vw 0 0;
+}
+
+.form-group   {
+   position: relative;
+   width: 60%;
+   height: auto;
+   margin-left: 20%;
+   padding-top: 8.5vw;
+   margin-bottom: 10px;
+}
+
+label {
+   float: left;
+   color: white;
+   font-size: 2vw;
+}
+
+.form-group .form-control  {
+   color: white;
+   background-color: rgba(0, 0, 0, 0.75);
+   font-size: 1vw;
+   height: 11vw;
+}
+
+.btn-group  {
+   margin-top: 10px;
+   margin-left: 20%;
+   width: 60%;
+   font-size: 1.2vw;
+   margin-bottom: 2vw;
+}
+
+#submit-btn  {
+   float: left;
+   margin-left: 20%;
+   width: 60%;
+   font-size: 1.5vw;
+   margin-bottom: 20px;
+}
+
+.dropdown-menu {
+   width: 100%;
+   background-color: orangered;
+   color: white;
+}
+
+.dropdown-item {
+   color: white;
+   font-size: 1vw;
+   white-space: pre-line;
+   padding: 5px 2px 5px 2px;
+   border-bottom: 1px solid black;
+}
+
+.dropdown-item:hover {
+   cursor: pointer;
+   color: white;
+   background-color: #007bff;
+}
+
+.alert   {
+   font-size: 1.2vw;
+}
+
+.drop-error {
+   border: 1px solid red;
+}
+
+.sql-error {
+   border: 1px solid red;
+}
+
+.test {
+   margin-left: 2vw;
+   width: 60%;
+   color: white;
+   font-size: 2.5vw;
+}
+

@@ -1,0 +1,60 @@
+<div class="overlay"></div>
+
+<form #form="ngForm" (ngSubmit)="onSubmitQuery(form)">
+
+      <div class="form-group">
+         <label for="statement"
+                style="padding-bottom: 0; margin-bottom: 0;">Input SQL Statement</label>
+         <textarea class="form-control" id="statement" rows="7" name="statement"
+                   placeholder="Enter SQL or enter GET ALL for all tables. . ." [(ngModel)]="mySql.statement"
+                   required #statementField="ngModel"
+                   (blur)="onBlur(statementField)"
+                   [class.drop-error]="form.submitted && onBlur(statementField) === true"
+                   [class.sql-error]="form.submitted && statementField.invalid">
+         </textarea>
+         <div [hidden]="!form.submitted || statementField.valid"
+               class="alert alert-danger">
+               Please enter a SQL statement.
+         </div>
+         <!-- Hide if form has not been submitted or statement field is not equal to drop, DROP -->
+         <div [hidden]="!form.submitted || onBlur(statementField) === false"
+              class="alert alert-danger">
+            Users cannot DROP tables! Enter another SQL statement.
+         </div>
+      </div>
+      <button type="submit" id="submit-btn" class="btn btn-primary">Submit SQL</button>
+</form>
+
+<!-- Here is where the table is displayed based on the query results -->
+<br>
+<p class="lead">Results:</p>
+<app-book-table id="bookTable" *ngIf="getActiveTable() === 'bookTable' || getActiveTable()=== 'all'"></app-book-table>
+<app-customer-table id="customerTable" *ngIf="getActiveTable() === 'customerTable' || getActiveTable() === 'all'"></app-customer-table>
+<app-employee-table id="employeeTable" *ngIf="getActiveTable() === 'employeeTable' || getActiveTable() === 'all'"></app-employee-table>
+<app-order-table id="orderTable" *ngIf="getActiveTable() === 'orderTable' || getActiveTable() === 'all'"></app-order-table>
+<app-order-details-table id="orderDetailsTable" *ngIf="getActiveTable() === 'orderDetailsTable' || getActiveTable() === 'all'"></app-order-details-table>
+<app-shipper-table id="shipperTable" *ngIf="getActiveTable() === 'shipperTable' || getActiveTable() === 'all'"></app-shipper-table>
+<app-subject-table id="subjectTable" *ngIf="getActiveTable() === 'subjectTable' || getActiveTable() === 'all'"></app-subject-table>
+<app-supplier-table id="supplierTable" *ngIf="getActiveTable() === 'supplierTable' || getActiveTable() === 'all'"></app-supplier-table>
+
+<app-subject-name-only id="category-nameOnly-table" *ngIf="getActiveTable() === 'category-nameOnly-table'"></app-subject-name-only>
+<app-title-and-price id="titleAndPrice" *ngIf="getActiveTable() === 'titleAndPrice'"></app-title-and-price>
+<app-first-and-last-name id="firstAndLastName" *ngIf="getActiveTable() === 'firstAndLastName'"></app-first-and-last-name>
+<app-first-last-name-and-title id="firstLastNameAndTitle" *ngIf="getActiveTable() === 'firstLastNameAndTitle'"></app-first-last-name-and-title>
+<app-first-last-name-and-total-orders id="firstLastNameAndTotalOrders" *ngIf="getActiveTable() === 'firstLastNameAndTotalOrders'"></app-first-last-name-and-total-orders>
+<app-first-last-name-and-total-purchases id="firstLastNameAndTotalPurchases" *ngIf="getActiveTable() === 'firstLastNameAndTotalPurchases'"></app-first-last-name-and-total-purchases>
+<app-first-last-name-total-sale id="firstLastNameTotalSale" *ngIf="getActiveTable()=== 'firstLastNameTotalSale'"></app-first-last-name-total-sale>
+<app-names-by-author id="namesByAuthor" *ngIf="getActiveTable() === 'namesByAuthor'"></app-names-by-author>
+<app-names-by-order-amount id="namesByOrderAmount" *ngIf="getActiveTable() === 'namesByOrderAmount'"></app-names-by-order-amount>
+<app-names-with-phone-and-total-orders id="namesWithPhoneAndTotalOrders" *ngIf="getActiveTable() === 'namesWithPhoneAndTotalOrders'"></app-names-with-phone-and-total-orders>
+<app-subject-name-only id="subjectNameOnly" *ngIf="getActiveTable() === 'subjectNameOnly'"></app-subject-name-only>
+<app-title-and-quantity id="titleAndQuantity" *ngIf="getActiveTable() === 'titleAndQuantity'"></app-title-and-quantity>
+<app-title-and-shipper-name id="titleAndShipperName" *ngIf="getActiveTable() === 'titleAndShipperName'"></app-title-and-shipper-name>
+<app-title-and-total-quantity id="titleAndTotalQuantity" *ngIf="getActiveTable() === 'titleAndTotalQuantity'"></app-title-and-total-quantity>
+<app-title-only id="titleOnly" *ngIf="getActiveTable() === 'titleOnly'"></app-title-only>
+<app-title-only-by-supplier id="titleOnlyBySupplier" *ngIf="getActiveTable() === 'titleOnlyBySupplier'"></app-title-only-by-supplier>
+<app-titles-only-by-customer-order id="titlesOnlyByCustomerOrder" *ngIf="getActiveTable() === 'titlesOnlyByCustomerOrder'"></app-titles-only-by-customer-order>
+<app-titles-only-by-employee id="titleOnlyByEmployee" *ngIf="getActiveTable() === 'titleOnlyByEmployee'"></app-titles-only-by-employee>
+<app-titles-only-units id="titleOnlyUnits" *ngIf="getActiveTable() === 'titleOnlyUnits'"></app-titles-only-units>
+<app-total-price id="totalPrice" *ngIf="getActiveTable() === 'totalPrice'"></app-total-price>
+

@@ -1,0 +1,14 @@
+<table class="table table-striped table-dark">
+   <thead>
+   <tr class="bg-primary">
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let name of firstLastNames">
+      <td>{{name.firstName}}</td>
+      <td>{{name.lastName}}</td>
+   </tr>
+   </tbody>
+</table>

@@ -1,0 +1,14 @@
+<table class="table table-striped table-dark">
+   <thead>
+   <tr class="bg-primary">
+      <th scope="col">Book Title</th>
+      <th scope="col">Shipper Name</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let name of titleAndShippers">
+      <td>{{name.bookTitle}}</td>
+      <td>{{name.shipperName}}</td>
+   </tr>
+   </tbody>
+</table>

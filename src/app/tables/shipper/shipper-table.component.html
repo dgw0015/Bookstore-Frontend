@@ -1,0 +1,16 @@
+<div class="lead"
+     style="font-size: 2vw; padding-bottom: 0; margin-bottom: 10px; color: white; text-align: center;">Shippers</div>
+<table class="table table-striped table-dark">
+   <thead>
+   <tr class="bg-primary">
+      <th scope="col">Shipper Name</th>
+      <th scope="col">Shipper ID</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let name of shippers">
+      <td>{{name.shipper_name}}</td>
+      <td>{{name.shipperID}}</td>
+   </tr>
+   </tbody>
+</table>
