@@ -35,7 +35,6 @@ import { TitlesOnlyByEmployeeComponent } from './tables/titles-only-by-employee/
 import { NamesByOrderAmountComponent } from './tables/names-by-order-amount/names-by-order-amount.component';
 import { NamesByAuthorComponent } from './tables/names-by-author/names-by-author.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -76,8 +75,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    NgbModule
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 import { Book } from '../models/book';
@@ -12,7 +12,6 @@ import { Supplier} from '../models/supplier';
 import {SubjectCategoryName} from '../models/subjectCategoryName';
 import {TitleAndPrice} from '../models/titleAndPrice';
 import {TitleOnly} from '../models/titleOnly';
-import {TotalPrice} from '../models/totalPrice';
 import {FirstAndLastName} from '../models/firstAndLastName';
 import {FirstLastNameTotalPurchases} from '../models/firstLastNameTotalPurchases';
 import {TitleAndShipperName} from '../models/titleAndShipperName';

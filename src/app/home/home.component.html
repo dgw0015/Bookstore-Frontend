@@ -28,15 +28,7 @@
 <!-- Here is where the table is displayed based on the query results -->
 <br>
 <p class="lead">Results:</p>
-<app-book-table id="bookTable" *ngIf="getActiveTable() === 'bookTable' || getActiveTable()=== 'all'"></app-book-table>
-<app-customer-table id="customerTable" *ngIf="getActiveTable() === 'customerTable' || getActiveTable() === 'all'"></app-customer-table>
-<app-employee-table id="employeeTable" *ngIf="getActiveTable() === 'employeeTable' || getActiveTable() === 'all'"></app-employee-table>
-<app-order-table id="orderTable" *ngIf="getActiveTable() === 'orderTable' || getActiveTable() === 'all'"></app-order-table>
-<app-order-details-table id="orderDetailsTable" *ngIf="getActiveTable() === 'orderDetailsTable' || getActiveTable() === 'all'"></app-order-details-table>
-<app-shipper-table id="shipperTable" *ngIf="getActiveTable() === 'shipperTable' || getActiveTable() === 'all'"></app-shipper-table>
-<app-subject-table id="subjectTable" *ngIf="getActiveTable() === 'subjectTable' || getActiveTable() === 'all'"></app-subject-table>
-<app-supplier-table id="supplierTable" *ngIf="getActiveTable() === 'supplierTable' || getActiveTable() === 'all'"></app-supplier-table>
-
+<hr class="results-line">
 <app-subject-name-only id="category-nameOnly-table" *ngIf="getActiveTable() === 'category-nameOnly-table'"></app-subject-name-only>
 <app-title-and-price id="titleAndPrice" *ngIf="getActiveTable() === 'titleAndPrice'"></app-title-and-price>
 <app-first-and-last-name id="firstAndLastName" *ngIf="getActiveTable() === 'firstAndLastName'"></app-first-and-last-name>
@@ -58,3 +50,13 @@
 <app-titles-only-units id="titleOnlyUnits" *ngIf="getActiveTable() === 'titleOnlyUnits'"></app-titles-only-units>
 <app-total-price id="totalPrice" *ngIf="getActiveTable() === 'totalPrice'"></app-total-price>
 
+<h1 class="display-4">All Tables In Database</h1>
+<hr id="hr">
+<app-book-table id="bookTable"></app-book-table>
+<app-customer-table id="customerTable"></app-customer-table>
+<app-employee-table id="employeeTable"></app-employee-table>
+<app-order-table id="orderTable"></app-order-table>
+<app-order-details-table id="orderDetailsTable"></app-order-details-table>
+<app-shipper-table id="shipperTable"></app-shipper-table>
+<app-subject-table id="subjectTable"></app-subject-table>
+<app-supplier-table id="supplierTable"></app-supplier-table>

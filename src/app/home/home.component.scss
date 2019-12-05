@@ -20,8 +20,18 @@ form  {
    text-align: center;
    font-size: 3vw;
    color: white;
-   margin-bottom: 0;
-   padding: 2.5vw 1vw 0 0;
+   margin: 0 0 -.8vw 0;
+   padding: 3vw 0 0 0;
+}
+
+.results-line  {
+   position: relative;
+   width: 12%;
+   margin: 0 0 0 44%;
+   padding: 0;
+   border: 1px solid orangered;
+   border-radius: 50%;
+   box-shadow: 0 2px orangered;
 }
 
 .form-group   {
@@ -59,7 +69,7 @@ label {
    margin-left: 20%;
    width: 60%;
    font-size: 1.5vw;
-   margin-bottom: 20px;
+   margin-bottom: 1vw;
 }
 
 .dropdown-menu {
@@ -99,5 +109,21 @@ label {
    width: 60%;
    color: white;
    font-size: 2.5vw;
+}
+
+.display-4  {
+   font-size: 3vw;
+   color: white;
+   margin: 1vw 0 -.3vw 0;
+   padding: 2vw 0 0 0;
+   text-align: center;
+}
+
+#hr {
+   margin: 0 0 0 32.5%;
+   width: 35%;
+   border: 1px solid orangered;
+   padding: 0;
+   border-radius: 50%;
 }
 

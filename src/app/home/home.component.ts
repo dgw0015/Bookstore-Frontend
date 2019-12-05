@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
    postErrorMessage = '';
 
    // changes the visible tables
-   activeTable = 'bookTable';
+   activeTable = 'all';
 
    selectAllBooks: string;
    selectAllCustomers: string;
@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit {
      this.query.selectQuery16 = 'SELECT E.first_name, E.last_name, SUM(B.unit_price * OD.Quantity) AS TotalSaleOfOrder FROM db_book B, db_employee E, db_order O, db_order_detail OD WHERE O.OrderID = OD.OrderID AND B.BookID = OD.BookID AND O.EmployeeID = E.EmployeeID GROUP BY E.EmployeeID;';
      this.query.selectQuery17 = 'SELECT B.Title, sum(OD.Quantity) AS TotalQuantity FROM db_book B, db_order O, db_order_detail OD WHERE B.BookID = OD.BookID AND O.OrderID = OD.OrderID AND (O.shipped_date is NULL OR O.shipped_date > 8/4/2016 GROUP BY B.Title;';
      this.query.selectQuery18 = 'SELECT C.first_name, C.last_name, SUM(OD.Quantity) AS TotalOrders FROM db_customer C, db_order O, db_order_detail OD WHERE OD.OrderID = O.orderID AND O.CustomerID = C.CustomerID GROUP BY C.CustomerID HAVING TotalOrders > 1 ORDER BY TotalOrders DESC;';
-     this.query.selectQuery19 = 'SELECT C.first_name, C.last_name, C.Phone, SUM(OD.Quantity) AS TotalOrders FROM db_customer C, db_order O, db_order_detail OD WHERE OD.OrderID = O.orderID AND O.CustomerID = C.CustomerID GROUP BY C.CustomerID HAVING TotalOrders > ;';
+     this.query.selectQuery19 = 'SELECT C.first_name, C.last_name, C.Phone, SUM(OD.Quantity) AS TotalOrders FROM db_customer C, db_order O, db_order_detail OD WHERE OD.OrderID = O.orderID AND O.CustomerID = C.CustomerID GROUP BY C.CustomerID HAVING TotalOrders > 3;';
      this.selectAllBooks = 'SELECT * FROM db_book;';
      this.selectAllCustomers = 'SELECT * FROM db_customer;';
      this.selectAllEmployees = 'SELECT * FROM db_employee;';
@@ -166,13 +166,13 @@ export class HomeComponent implements OnInit {
      this.mySql.statement.toLowerCase();
      let i = 0;
      while (i < sqlLength)  {
-        if (this.mySql.statement.charAt(i) === 'd')  {
+        if (this.mySql.statement.toLowerCase().charAt(i) === 'd')  {
            i++;
-           if (this.mySql.statement.charAt(i) === 'r')  {
+           if (this.mySql.statement.toLowerCase().charAt(i) === 'r')  {
               i++;
-              if (this.mySql.statement.charAt(i) === 'o')  {
+              if (this.mySql.statement.toLowerCase().charAt(i) === 'o')  {
                  i++;
-                 if (this.mySql.statement.charAt(i) === 'p')  {
+                 if (this.mySql.statement.toLowerCase().charAt(i) === 'p')  {
                      return true;
                  }
               }
