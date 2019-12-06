@@ -6,7 +6,7 @@
          <label for="statement"
                 style="padding-bottom: 0; margin-bottom: 0;">Input SQL Statement</label>
          <textarea class="form-control" id="statement" rows="7" name="statement"
-                   placeholder="Enter SQL or enter GET ALL for all tables. . ." [(ngModel)]="mySql.statement"
+                   placeholder="Enter SQL. . ." [(ngModel)]="mySql.statement"
                    required #statementField="ngModel"
                    (blur)="onBlur(statementField)"
                    [class.drop-error]="form.submitted && onBlur(statementField) === true"
