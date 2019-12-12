@@ -27,11 +27,10 @@ form  {
 .results-line  {
    position: relative;
    width: 12%;
-   margin: 0 0 .5vw 44%;
+   margin: 0 0 1vw 44%;
    padding: 0;
    border: 1px solid orangered;
    border-radius: 50%;
-   box-shadow: 0 2px orangered;
 }
 
 .form-group   {
@@ -102,6 +101,11 @@ label {
 
 .sql-error {
    border: 1px solid red;
+}
+
+.input-error   {
+   border: 1px solid red;
+
 }
 
 .test {

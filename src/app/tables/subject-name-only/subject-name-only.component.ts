@@ -17,12 +17,9 @@ export class SubjectNameOnlyComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getCategoryOfBooksBySupplier().subscribe(data => {
-          this.subjectCategoryNames = data;
+      this.subjectCategoryNames = data;
     });
   }
-
-
-
 
 
 }

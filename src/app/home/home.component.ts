@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {Sql} from '../models/sql';
 import {NgForm, NgModel} from '@angular/forms';
 import {Queries} from '../models/queries';
@@ -10,6 +10,7 @@ import {Order} from '../models/order';
 import {Shipper} from '../models/shipper';
 import {Subject} from '../models/subject';
 import {Supplier} from '../models/supplier';
+import {SubjectCategoryName} from '../models/subjectCategoryName';
 
 
 @Component({
@@ -21,6 +22,9 @@ export class HomeComponent implements OnInit {
    attributeString: String;
    postError = false;
    postErrorMessage = '';
+   inputError: boolean;
+   prevSqlLength: number;
+   semicolonError: boolean;
 
    // changes the visible tables
    activeTable = 'all';
@@ -85,7 +89,6 @@ export class HomeComponent implements OnInit {
       phone: null
    };
 
-
    mySql : Sql = {
       statement: null,
    };
@@ -141,6 +144,8 @@ export class HomeComponent implements OnInit {
      this.selectAllShippers = 'SELECT * FROM db_shipper;';
      this.selectAllSubjects = 'SELECT * FROM db_subject;';
      this.selectAllSuppliers = 'SELECT * FROM db_supplier;';
+     this.inputError = false;
+     this.prevSqlLength = 0;
   }
 
   ngOnInit() {
@@ -160,12 +165,30 @@ export class HomeComponent implements OnInit {
      this.activeTable = tableName;
   }
 
+  setInputError(value: boolean)  {
+     this.inputError = value;
+  }
+
+  getInputErrorStatus(): boolean {
+     return this.inputError;
+  }
+
+  setPrevSqlLength(length: number): void  {
+     this.prevSqlLength = length;
+  }
+
+  getPrevSqlLength(): number  {
+     return this.prevSqlLength;
+  }
+
   onBlur(field: NgModel): boolean {
+     if (this.getPrevSqlLength() != this.mySql.statement.length
+         && this.mySql.statement.length != 0)  {
+        this.setInputError(false);
+     }
      this.mySql.statement = field.value;
-     const sqlLength = this.mySql.statement.length;
-     this.mySql.statement.toLowerCase();
      let i = 0;
-     while (i < sqlLength)  {
+     while (i < this.mySql.statement.length)  {
         if (this.mySql.statement.toLowerCase().charAt(i) === 'd')  {
            i++;
            if (this.mySql.statement.toLowerCase().charAt(i) === 'r')  {
@@ -182,6 +205,7 @@ export class HomeComponent implements OnInit {
            i++;
         }
      }
+
      return false;
   }
 
@@ -192,7 +216,7 @@ export class HomeComponent implements OnInit {
             || this.mySql.statement.toLowerCase().startsWith('delete from db_customer')) {
            this.deleteCustomer();
         }
-        if (this.mySql.statement.toLowerCase().startsWith('delete from `bookstore`.`db_book`')
+        if(this.mySql.statement.toLowerCase().startsWith('delete from `bookstore`.`db_book`')
             || this.mySql.statement.toLowerCase().startsWith('delete from db_book')) {
            this.deleteBook();
         }
@@ -215,9 +239,6 @@ export class HomeComponent implements OnInit {
         if (this.mySql.statement.toLowerCase().startsWith('delete from `bookstore`.`db_supplier`')
             || this.mySql.statement.toLowerCase().startsWith('delete from db_supplier')) {
            this.deleteSupplier();
-        }
-        if (this.mySql.statement.toString().toLowerCase().startsWith('get all')) {
-           this.setActiveTable('all');
         }
         if (this.mySql.statement.toString().toLowerCase() === this.query.selectQuery1.toLowerCase()) {
            this.setActiveTable('category-nameOnly-table');
@@ -322,7 +343,7 @@ export class HomeComponent implements OnInit {
            this.createCustomerHandler();
         }
         if (this.mySql.statement.toLowerCase().startsWith('insert into `db_employee`')
-        || this.mySql.statement.toLowerCase().startsWith('insert into db_employee')) {
+            || this.mySql.statement.toLowerCase().startsWith('insert into db_employee')) {
            this.createEmployeeHandler();
         }
         if (this.mySql.statement.toLowerCase().startsWith('insert into `db_order`')
@@ -342,7 +363,13 @@ export class HomeComponent implements OnInit {
            this.createSupplierHandler();
         }
      }
-
+     if (this.mySql.statement.length > 0 && !this.mySql.statement.endsWith(';')) {
+           this.setInputError(true);
+     }
+     this.setPrevSqlLength(this.mySql.statement.length);
+     if (this.mySql.statement.length === 0)  {
+        this.setInputError(false);
+     }
    }
 
   // Create new book statement.
@@ -371,6 +398,11 @@ export class HomeComponent implements OnInit {
          error => this.onHttpError(error)
      );
    }
+
+   // test
+   // query1(supplierID: number) {
+   //   this.dataService.
+   // }
 
   // Create new customer statement.
   createCustomerHandler(): void {

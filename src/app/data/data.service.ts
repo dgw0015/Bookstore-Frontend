@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {HttpClient} from '@angular/common/http';
 
 import { Book } from '../models/book';
 import { Customer } from '../models/customer';
@@ -30,10 +29,6 @@ import {NamesByAuthor} from '../models/namesByAuthor';
 import {Observable} from 'rxjs';
 import {OrderDetails} from '../models/orderDetails';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 
 @Injectable({
@@ -140,9 +135,9 @@ export class DataService {
   // ALL the get DATA methods.
   ////////////////////////////////////////////////////
 
-  getAllBooks(): Observable<Book[]>  {
-    return this.http.get<Book[]>(this.allBooksUrl);
-  }
+   getAllBooks():Observable<Book[]> {
+      return this.http.get<Book[]>(this.allBooksUrl);
+   }
 
   getAllCustomers():Observable<Customer[]>   {
      return this.http.get<Customer[]>(this.allCustomersUrl);
@@ -174,7 +169,7 @@ export class DataService {
 
   // 1
   getCategoryOfBooksBySupplier(): Observable<SubjectCategoryName[]> {
-     return this.http.get<SubjectCategoryName[]>(this.query1Url);
+      return this.http.get<SubjectCategoryName[]>(this.query1Url);
    }
 
 

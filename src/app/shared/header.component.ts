@@ -5,7 +5,9 @@ import { Component, OnInit } from '@angular/core';
    selector: 'app-header',
    template: `
       <div class="topBanner">
-         <h1 class="display-3">Auburn Bookstore</h1>
+         <a target="_blank" href="https://www.aubookstore.com/">
+            <h1 class="display-3">Auburn Bookstore</h1>
+         </a>
          <hr>
       </div>
       <a target="_blank" href="http://www.auburn.edu/">
